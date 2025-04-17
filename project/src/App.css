@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  width: 800px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -41,20 +42,28 @@
   color: #888;
 }
 
+.bigger-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .wrapper {
   background-color: rgb(74, 74, 74);
-  border: 1px solid rgb(0, 255, 251);
+  border: 1px solid rgb(255, 221, 2);
   border-radius: 5px;
   display: flex;
+
   position: relative;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-  width: 400px;
+  width: 300px;
 
   p {
     margin: 0.5rem;
     background-color: black;
-    width: 300px;
+    width: 250px;
     border-radius: 5px;
     padding: 0.5rem;
     text-align: left;
@@ -66,4 +75,43 @@
     right: 15px;
     top: 23px;
   }
+}
+
+h1 {
+  color: rgb(175, 255, 36);
+}
+
+.header {
+  background-color: grey;
+  color: rgb(255, 221, 2);
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+.form {
+  margin: 2rem;
+}
+
+.input {
+  height: 2rem;
+  width: 300px;
+  border-color: rgb(175, 255, 36);
+  border-radius: 5px;
+  font-weight: 800;
+}
+
+.input-button {
+  margin-left: 1rem;
+  background: rgb(175, 255, 36);
+  color: black;
+  font-weight: 800;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid rgb(175, 255, 36);
+  }
+}
+
+.gif {
 }
