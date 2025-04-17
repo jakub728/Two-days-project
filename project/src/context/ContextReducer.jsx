@@ -34,10 +34,18 @@ const reducer = (state, action) => {
       };
 
       if (action.payload === "") {
-        alert("No input!");
-      } else if (state.items.some((item) => item.content === action.payload)) {
-        alert("item already exists!");
-      } else {
+        return {
+          ...state,
+          error: "No players!",
+        };
+      } 
+      else if (state.items.some((item) => item.content === action.payload)) {
+        return {
+          ...state,
+          error: "Player already exists!",
+        };
+      } 
+      else {
         return {
           ...state,
           items: [...state.items, newPlayer],
@@ -56,7 +64,10 @@ const reducer = (state, action) => {
 
     case "PLAY":
       if (state.items.length < 2) {
-        alert("minimum 2 items required to play");
+        return {
+          ...state,
+          error: "Minimum 2 players required to play!",
+        };
       } else {
         return {
           ...state,
@@ -102,10 +113,28 @@ export default function ContextReducer({ children }) {
   const [player, setPlayer] = useState("");
   const [display, setDisplay] = useState("block");
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [open, setOpen] = useState(false);
+
+  function handleOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
 
   function addPlayer(e) {
     e.preventDefault();
     dispatch({ type: "ADD", payload: player });
+
+    setTimeout(() => {
+      if (state.error) {
+        handleOpen();
+      } else {
+        setPlayer("");
+      }
+    }, 0);
+    setPlayer("");
   }
 
   function deletePlayer(id) {
@@ -136,6 +165,8 @@ export default function ContextReducer({ children }) {
         deletePlayer,
         handlePlay,
         handleReset,
+        handleClose,
+        open,
       }}
     >
       {children}

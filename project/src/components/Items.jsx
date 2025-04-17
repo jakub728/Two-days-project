@@ -11,7 +11,10 @@ export default function Items() {
       {state.items.map((element) => (
         <div className="wrapper" style={{ display }} key={element.id}>
           <p>{element.content}</p>
-          <span onClick={() => deletePlayer(element.id)}>X</span>
+
+          <span className="x" onClick={() => deletePlayer(element.id)}>
+            x
+          </span>
         </div>
       ))}
     </div>

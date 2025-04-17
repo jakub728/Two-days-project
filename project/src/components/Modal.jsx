@@ -1,14 +1,15 @@
-import Popup from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/ContextReducer";
 
-export default function Modal({ open, close, message }) {
+export default function Modal() {
+  const { state, handleClose, open } = useContext(DataContext);
+
+  if (!open) return null;
+
   return (
-    <Popup open={open} closeOnDocumentClick onClose={close} modal>
-      <div className="modal">
-        <h3>{message}</h3>
-        <button onClick={close}>Close</button>
-      </div>
-    </Popup>
+    <div className="error">
+      <p>{state.error}</p>
+      {state.error ? <button onClick={handleClose}>OK</button> : null}
+    </div>
   );
 }

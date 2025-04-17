@@ -4,9 +4,11 @@ import { DataContext } from "../context/ContextReducer";
 import Form from "./Form";
 import Items from "./Items";
 import Buttons from "./Buttons";
+import Modal from "./Modal";
 
 export default function RandomPicker() {
-  const { setDisplay, state, dispatch } = useContext(DataContext);
+  const { setDisplay, state, dispatch, open, handleClose } =
+    useContext(DataContext);
 
   useEffect(() => {
     if (!state.isPlaying) return;
@@ -62,11 +64,12 @@ export default function RandomPicker() {
       {state.isPlaying ? (
         <h2 className="header">{state.pickedItem?.content}</h2>
       ) : (
-        <h2 className="header">Add items & pick one</h2>
+        <h2 className="header">Add name & pick one</h2>
       )}
       <Form />
       <Items />
       <Buttons />
+      <Modal />
       {state.isPlaying ? (
         <img className="gif" src={state.pickedGif} alt="gif" />
       ) : (

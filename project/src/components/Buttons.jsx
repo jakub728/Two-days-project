@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/ContextReducer";
 
 export default function Buttons() {
-    const { display, handlePlay, handleReset } = useContext(DataContext)
-
+  const { display, handlePlay, handleReset } = useContext(DataContext);
 
   return (
     <div
@@ -12,10 +11,11 @@ export default function Buttons() {
         display: "flex",
         justifyContent: "center",
         gap: "1rem",
-        marginTop: "2rem",
+        margin: "2rem",
       }}
     >
       <button
+        className="play-button"
         style={{ display }}
         onClick={() => {
           handlePlay();
@@ -23,7 +23,11 @@ export default function Buttons() {
       >
         Play
       </button>
-      <button style={{ display }} onClick={() => handleReset()}>
+      <button
+        className="reset-button"
+        style={{ display }}
+        onClick={() => handleReset()}
+      >
         Reset
       </button>
     </div>
